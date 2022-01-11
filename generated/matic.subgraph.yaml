@@ -1,0 +1,230 @@
+specVersion: 0.0.2
+schema:
+  file: avalor.schema.graphql
+dataSources:
+  - kind: ethereum/contract
+    name: KRL-erc20
+    network: matic
+    source:
+      address: "0xc17b109e146934d36c33e55fade9cbda791b0366"
+      abi: IERC20
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.5
+      language: wasm/assemblyscript
+      entities:
+        - ERC20Contract
+      abis:
+        - name: IERC20
+          file: ../node_modules/@openzeppelin/contracts/build/contracts/IERC20Metadata.json
+      eventHandlers:
+        - event: Approval(indexed address,indexed address,uint256)
+          handler: handleApproval
+        - event: Transfer(indexed address,indexed address,uint256)
+          handler: handleTransfer
+      file: ../node_modules/@openzeppelin/subgraphs/src/datasources/erc20.ts
+  - kind: ethereum/contract
+    name: KRL-accesscontrol
+    network: matic
+    source:
+      address: "0xc17b109e146934d36c33e55fade9cbda791b0366"
+      abi: AccessControl
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.5
+      language: wasm/assemblyscript
+      entities:
+        - AccessControl
+      abis:
+        - name: AccessControl
+          file: ../node_modules/@openzeppelin/contracts/build/contracts/IAccessControl.json
+      eventHandlers:
+        - event: RoleAdminChanged(indexed bytes32,indexed bytes32,indexed bytes32)
+          handler: handleRoleAdminChanged
+        - event: RoleGranted(indexed bytes32,indexed address,indexed address)
+          handler: handleRoleGranted
+        - event: RoleRevoked(indexed bytes32,indexed address,indexed address)
+          handler: handleRoleRevoked
+      file: ../node_modules/@openzeppelin/subgraphs/src/datasources/accesscontrol.ts
+  - kind: ethereum/contract
+    name: EOC-erc20
+    network: matic
+    source:
+      address: "0x4e9d760637da87fe3003adc8e1dad2fe0ae3c671"
+      abi: IERC20
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.5
+      language: wasm/assemblyscript
+      entities:
+        - ERC20Contract
+      abis:
+        - name: IERC20
+          file: ../node_modules/@openzeppelin/contracts/build/contracts/IERC20Metadata.json
+      eventHandlers:
+        - event: Approval(indexed address,indexed address,uint256)
+          handler: handleApproval
+        - event: Transfer(indexed address,indexed address,uint256)
+          handler: handleTransfer
+      file: ../node_modules/@openzeppelin/subgraphs/src/datasources/erc20.ts
+  - kind: ethereum/contract
+    name: EOC-accesscontrol
+    network: matic
+    source:
+      address: "0x4e9d760637da87fe3003adc8e1dad2fe0ae3c671"
+      abi: AccessControl
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.5
+      language: wasm/assemblyscript
+      entities:
+        - AccessControl
+      abis:
+        - name: AccessControl
+          file: ../node_modules/@openzeppelin/contracts/build/contracts/IAccessControl.json
+      eventHandlers:
+        - event: RoleAdminChanged(indexed bytes32,indexed bytes32,indexed bytes32)
+          handler: handleRoleAdminChanged
+        - event: RoleGranted(indexed bytes32,indexed address,indexed address)
+          handler: handleRoleGranted
+        - event: RoleRevoked(indexed bytes32,indexed address,indexed address)
+          handler: handleRoleRevoked
+      file: ../node_modules/@openzeppelin/subgraphs/src/datasources/accesscontrol.ts
+  - kind: ethereum/contract
+    name: RACE-erc721
+    network: matic
+    source:
+      address: "0xc96d83080f535c255771d456e2f59ab55758599f"
+      abi: IERC721
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.5
+      language: wasm/assemblyscript
+      entities:
+        - ERC721Contract
+      abis:
+        - name: IERC721
+          file: ../node_modules/@openzeppelin/contracts/build/contracts/IERC721Metadata.json
+      eventHandlers:
+        - event: Approval(indexed address,indexed address,indexed uint256)
+          handler: handleApproval
+        - event: ApprovalForAll(indexed address,indexed address,bool)
+          handler: handleApprovalForAll
+        - event: Transfer(indexed address,indexed address,indexed uint256)
+          handler: handleTransfer
+      file: ../node_modules/@openzeppelin/subgraphs/src/datasources/erc721.ts
+  - kind: ethereum/contract
+    name: RACE-accesscontrol
+    network: matic
+    source:
+      address: "0xc96d83080f535c255771d456e2f59ab55758599f"
+      abi: AccessControl
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.5
+      language: wasm/assemblyscript
+      entities:
+        - AccessControl
+      abis:
+        - name: AccessControl
+          file: ../node_modules/@openzeppelin/contracts/build/contracts/IAccessControl.json
+      eventHandlers:
+        - event: RoleAdminChanged(indexed bytes32,indexed bytes32,indexed bytes32)
+          handler: handleRoleAdminChanged
+        - event: RoleGranted(indexed bytes32,indexed address,indexed address)
+          handler: handleRoleGranted
+        - event: RoleRevoked(indexed bytes32,indexed address,indexed address)
+          handler: handleRoleRevoked
+      file: ../node_modules/@openzeppelin/subgraphs/src/datasources/accesscontrol.ts
+  - kind: ethereum/contract
+    name: TRACE-erc721
+    network: matic
+    source:
+      address: "0x019f01b8adf605e0e8de7170fd3026cf28122ba4"
+      abi: IERC721
+      startBlock: 22686148
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.5
+      language: wasm/assemblyscript
+      entities:
+        - ERC721Contract
+      abis:
+        - name: IERC721
+          file: ../node_modules/@openzeppelin/contracts/build/contracts/IERC721Metadata.json
+      eventHandlers:
+        - event: Approval(indexed address,indexed address,indexed uint256)
+          handler: handleApproval
+        - event: ApprovalForAll(indexed address,indexed address,bool)
+          handler: handleApprovalForAll
+        - event: Transfer(indexed address,indexed address,indexed uint256)
+          handler: handleTransfer
+      file: ../node_modules/@openzeppelin/subgraphs/src/datasources/erc721.ts
+  - kind: ethereum/contract
+    name: TRACE-accesscontrol
+    network: matic
+    source:
+      address: "0x019f01b8adf605e0e8de7170fd3026cf28122ba4"
+      abi: AccessControl
+      startBlock: 22686148
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.5
+      language: wasm/assemblyscript
+      entities:
+        - AccessControl
+      abis:
+        - name: AccessControl
+          file: ../node_modules/@openzeppelin/contracts/build/contracts/IAccessControl.json
+      eventHandlers:
+        - event: RoleAdminChanged(indexed bytes32,indexed bytes32,indexed bytes32)
+          handler: handleRoleAdminChanged
+        - event: RoleGranted(indexed bytes32,indexed address,indexed address)
+          handler: handleRoleGranted
+        - event: RoleRevoked(indexed bytes32,indexed address,indexed address)
+          handler: handleRoleRevoked
+      file: ../node_modules/@openzeppelin/subgraphs/src/datasources/accesscontrol.ts
+# Non-Standard Contracts
+  - kind: ethereum
+    name: Scholarship
+    network: matic
+    source:
+      address: "0x196422bcac5ffa15bf85c37fd2f1ccc627ef891c"
+      abi: Scholarship
+      startBlock: 22634045
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.5
+      language: wasm/assemblyscript
+      entities:
+        - ScholarshipHolder
+        - RacerAssignEvent
+      abis:
+        - name: Scholarship
+          file: ./abis/Scholarship.json
+      eventHandlers:
+        - event: RacerAssignEvent(bool,uint8,address,address,uint256,uint256)
+          handler: handleRacerAssignEvent
+      file: ./src/mapping.ts
+
+  - kind: ethereum
+    name: Marketplace2_0
+    network: matic
+    source:
+      address: "0xa85390023d04a40551ac6daeb9de91a58d3d30f8"
+      abi: Marketplace2_0
+      startBlock: 22797915
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.5
+      language: wasm/assemblyscript
+      entities:
+        - Trade
+        - RacerTradeEvent
+      abis:
+        - name: Marketplace2_0
+          file: ./abis/Marketplace2_0.json
+      eventHandlers:
+        - event: RacerTradeEvent(uint8,address,address,uint256,uint256,uint256)
+          handler: handleRacerTradeEvent
+      file: ./src/mapping.ts
